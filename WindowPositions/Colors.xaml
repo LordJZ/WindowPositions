@@ -1,0 +1,26 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <SolidColorBrush x:Key="TextBrush">#000000</SolidColorBrush>
+  <SolidColorBrush x:Key="TextSelectionBrush">#404040</SolidColorBrush>
+
+  <SolidColorBrush x:Key="EditableControlBackgroundBrush">#9FFFFFFF</SolidColorBrush>
+  <SolidColorBrush x:Key="HoveredEditableControlBackgroundBrush">#CFFFFFFF</SolidColorBrush>
+  <SolidColorBrush x:Key="DisabledEditableControlBackgroundBrush">#12000000</SolidColorBrush>
+
+  <SolidColorBrush x:Key="ClickableControlBackgroundBrush">#20000000</SolidColorBrush>
+  <SolidColorBrush x:Key="HoveredClickableControlBackgroundBrush">#16000000</SolidColorBrush>
+  <SolidColorBrush x:Key="PressedClickableControlBackgroundBrush">#30000000</SolidColorBrush>
+
+  <SolidColorBrush x:Key="SelectableControlBackgroundBrush">#10000000</SolidColorBrush>
+  <SolidColorBrush x:Key="HoveredSelectableControlBackgroundBrush">#20000000</SolidColorBrush>
+  <SolidColorBrush x:Key="SelectedSelectableControlBackgroundBrush">#28000000</SolidColorBrush>
+
+  <SolidColorBrush x:Key="ContextMenuBackgroundBrush">#FFEFEFEF</SolidColorBrush>
+  <SolidColorBrush x:Key="ContextMenuBorderBrush">#FFA0A0A0</SolidColorBrush>
+
+  <SolidColorBrush x:Key="ControlBorderBrush">#48202020</SolidColorBrush>
+
+  <SolidColorBrush x:Key="DisabledForegroundBrush">#808080</SolidColorBrush>
+
+  <SolidColorBrush x:Key="PressedIconBrush">#DFFFFFFF</SolidColorBrush>
+</ResourceDictionary>

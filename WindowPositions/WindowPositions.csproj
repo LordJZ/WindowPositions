@@ -56,6 +56,10 @@
     <Compile Include="WindowDTO.cs" />
     <Compile Include="WindowPosition.cs" />
     <Compile Include="WindowPositionRepository.cs" />
+    <Page Include="Colors.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -79,6 +83,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\deps\LordJZ.Presentation\LordJZ.Presentation.csproj">
+      <Project>{dc0d7136-5f0d-4fbd-bd8d-b4f28dc10c11}</Project>
+      <Name>LordJZ.Presentation</Name>
+    </ProjectReference>
     <ProjectReference Include="..\deps\LordJZ.WinAPI\LordJZ.WinAPI.csproj">
       <Project>{44947934-AC3F-40E0-9303-21EF5975FD7F}</Project>
       <Name>LordJZ.WinAPI</Name>

@@ -11,6 +11,13 @@ namespace WindowPositions
     {
         protected override void OnStartup(StartupEventArgs e)
         {
+            LordJZ.WinAPI.Process.SetDpiAwareness(LordJZ.WinAPI.ProcessDpiAwareness.PerMonitorDpiAware);
+            LordJZ.Presentation.Controls.BaseWindow.PerMonitorDpiAware = true;
+
+            System.Threading.Thread.CurrentThread.Name = "WindowPositionsUI";
+
+            base.OnStartup(e);
+
             if (e.Args.Any(arg => arg == "/RestoreAllPositions"))
             {
                 WindowPositionRepository.RestoreAllPositions();
