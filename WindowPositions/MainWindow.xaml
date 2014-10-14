@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:windowPositions="clr-namespace:WindowPositions"
         mc:Ignorable="d"
-        Title="MainWindow" Height="339.5" Width="616.5">
+        Title="Window Positions" Height="339" Width="616">
   <Grid>
     <Grid.ColumnDefinitions>
       <ColumnDefinition/>
