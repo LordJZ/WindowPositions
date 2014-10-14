@@ -18,6 +18,7 @@
         <GridView>
           <GridViewColumn Header="Class" DisplayMemberBinding="{Binding ClassName}"/>
           <GridViewColumn Header="Title" DisplayMemberBinding="{Binding Title}"/>
+          <GridViewColumn Header="Saved" DisplayMemberBinding="{Binding Saved}"/>
         </GridView>
       </ListView.View>
     </ListView>

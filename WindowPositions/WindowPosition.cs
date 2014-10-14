@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LordJZ.WinAPI;
+﻿using LordJZ.WinAPI;
 
 namespace WindowPositions
 {
@@ -19,7 +14,7 @@ namespace WindowPositions
         {
             if (this.Title != null)
             {
-                if (dto.Title != this.Title)
+                if (this.Title != dto.Title)
                     return false;
             }
 

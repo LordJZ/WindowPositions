@@ -27,6 +27,8 @@ namespace WindowPositions
 
         internal readonly NativeWindow NativeWindow;
 
+        public bool Saved { get; set; }
+
         public string ClassName { get; set; }
 
         public string Title { get; set; }

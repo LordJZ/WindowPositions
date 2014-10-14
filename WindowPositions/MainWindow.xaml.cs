@@ -82,7 +82,13 @@ namespace WindowPositions
             this.WindowsListView.ItemsSource =
                 NativeWindow.Enumerate()
                             .Select(nw => new WindowDTO(nw))
-                            .OrderBy(w => w.ClassName)
+                            .Select(nw =>
+                                    {
+                                        nw.Saved = WindowPositionRepository.Positions.Any(_ => _.Matches(nw));
+                                        return nw;
+                                    })
+                            .OrderByDescending(w => w.Saved)
+                            .ThenBy(w => w.ClassName)
                             .ThenBy(w => w.Title)
                             .ToArray();
         }
