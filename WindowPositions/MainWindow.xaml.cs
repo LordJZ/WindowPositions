@@ -102,8 +102,8 @@ namespace WindowPositions
 
             WindowPosition pos = new WindowPosition();
             pos.Placement = item.NativeWindow.Placement;
-            pos.ClassName = item.NativeWindow.ClassName;
-            pos.Title = this.MatchTitleCheckBox.IsChecked != false ? item.NativeWindow.Text : null;
+            pos.ClassName = item.ClassName;
+            pos.Title = this.MatchTitleCheckBox.IsChecked != false ? item.Title : null;
 
             positions = System.Linq.Enumerable.Concat(positions, new[] { pos });
 
