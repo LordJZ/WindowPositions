@@ -40,10 +40,22 @@ namespace WindowPositions
         void timer_Tick(object sender, EventArgs e)
         {
             NativeWindow active = NativeWindow.Foreground;
-            if (active.Handle == Handle.NullHandle)
-                this.ActivaWindowTextBox.Text = string.Empty;
+            if (active.Handle != Handle.NullHandle)
+            {
+                ProcessDpiAwareness? dpi = null;
+                try
+                {
+                    using (Process proc = Process.Open(active.ProcessId))
+                        dpi = proc.DpiAwareness;
+                }
+                catch
+                {
+                }
+
+                this.ActivaWindowTextBox.Text = active.ClassName + "|" + active.Text + " (" + dpi + ")";
+            }
             else
-                this.ActivaWindowTextBox.Text = active.ClassName + "|" + active.Text;
+                this.ActivaWindowTextBox.Text = string.Empty;
 
             WindowDTO item = (WindowDTO)this.WindowsListView.SelectedItem;
             if (item != null && item.NativeWindow.IsValid)
