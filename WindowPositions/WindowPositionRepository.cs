@@ -55,7 +55,7 @@ namespace WindowPositions
 
         public static void RestoreAllPositions()
         {
-            IEnumerable<WindowDTO> windows = NativeWindow.Enumerate().Select(_ => new WindowDTO(_)).ToArray();
+            IEnumerable<WindowDTO> windows = NativeWindow.Enumerate().Select(WindowDTO.TryCreate).Where(dto => dto != null).ToArray();
 
             var pairs = from position in Positions
                         from window in windows

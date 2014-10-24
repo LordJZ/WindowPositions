@@ -93,7 +93,8 @@ namespace WindowPositions
         {
             this.WindowsListView.ItemsSource =
                 NativeWindow.Enumerate()
-                            .Select(nw => new WindowDTO(nw))
+                            .Select(WindowDTO.TryCreate)
+                            .Where(dto => dto != null)
                             .Select(nw =>
                                     {
                                         nw.Saved = WindowPositionRepository.Positions.Any(_ => _.Matches(nw));
