@@ -110,8 +110,7 @@ namespace WindowPositions
         {
             WindowDTO item = (WindowDTO)this.WindowsListView.SelectedItem;
             WindowPosition pos = WindowPositionRepository.Positions.First(_ => _.Matches(item));
-            NativeWindow window = item.NativeWindow;
-            window.Placement = pos.Placement;
+            pos.Apply(item.NativeWindow);
         }
 
         private void SavePositionButton_Click(object sender, RoutedEventArgs e)

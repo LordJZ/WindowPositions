@@ -63,10 +63,7 @@ namespace WindowPositions
                         select new { Position = position, Window = window };
 
             foreach (var pair in pairs)
-            {
-                NativeWindow window = pair.Window.NativeWindow;
-                window.Placement = pair.Position.Placement;
-            }
+                pair.Position.Apply(pair.Window.NativeWindow);
         }
     }
 }

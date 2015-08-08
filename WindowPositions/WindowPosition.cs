@@ -23,5 +23,12 @@ namespace WindowPositions
 
             return true;
         }
+
+        public void Apply(NativeWindow window)
+        {
+            WindowPlacement placement = this.Placement;
+
+            window.Placement = placement;
+        }
     }
 }
