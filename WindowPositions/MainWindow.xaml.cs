@@ -91,19 +91,17 @@ namespace WindowPositions
 
         void RefreshButton_Click(object sender, RoutedEventArgs e)
         {
-            this.WindowsListView.ItemsSource =
-                NativeWindow.Enumerate()
-                            .Select(WindowDTO.TryCreate)
-                            .Where(dto => dto != null)
-                            .Select(nw =>
-                                    {
-                                        nw.Saved = WindowPositionRepository.Positions.Any(_ => _.Matches(nw));
-                                        return nw;
-                                    })
-                            .OrderByDescending(w => w.Saved)
-                            .ThenBy(w => w.ClassName)
-                            .ThenBy(w => w.Title)
-                            .ToArray();
+	        this.WindowsListView.ItemsSource =
+		        WindowDTO.Enumerate()
+		                 .Select(nw =>
+		                 {
+			                 nw.Saved = WindowPositionRepository.Positions.Any(_ => _.Matches(nw));
+			                 return nw;
+		                 })
+		                 .OrderByDescending(w => w.Saved)
+		                 .ThenBy(w => w.ClassName)
+		                 .ThenBy(w => w.Title)
+		                 .ToArray();
         }
 
         private void RestorePositionButton_Click(object sender, RoutedEventArgs e)

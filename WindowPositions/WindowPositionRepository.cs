@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
+using LordJZ.Linq;
 using System.Xml.Serialization;
 using LordJZ.Collections;
 using LordJZ.WinAPI;
@@ -55,7 +55,7 @@ namespace WindowPositions
 
         public static void RestoreAllPositions()
         {
-            IEnumerable<WindowDTO> windows = NativeWindow.Enumerate().Select(WindowDTO.TryCreate).Where(dto => dto != null).ToArray();
+            IEnumerable<WindowDTO> windows = WindowDTO.Enumerate().ToArray();
 
             var pairs = from position in Positions
                         from window in windows

@@ -1,4 +1,7 @@
-﻿using System.Text.RegularExpressions;
+﻿using System;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using LordJZ.Linq;
 using LordJZ.WinAPI;
 
 namespace WindowPositions
@@ -8,7 +11,7 @@ namespace WindowPositions
         //HwndWrapper[WindowPositions.exe;;837cb3a7-028d-43a7-bfee-33e6db4b1105]|MainWindow
         static readonly Regex s_hwndWrapperRegex = new Regex(@"HwndWrapper\[(.+);[a-z0-9\-]{36}\]");
 
-        public static WindowDTO TryCreate(NativeWindow window)
+        static WindowDTO TryCreate(NativeWindow window)
         {
             try
             {
@@ -19,6 +22,34 @@ namespace WindowPositions
                 return null;
             }
         }
+
+	    static readonly Tuple<string, string>[] s_exceptions =
+	    {
+            Tuple.Create("CiceroUIWndFrame", "CiceroUIWndFrame"),
+            Tuple.Create("GDI+ Hook Window Class", "GDI+ Window"),
+		    Tuple.Create("IME", "Default IME"),
+		    Tuple.Create("MSCTFIME UI", "MSCTFIME UI"),
+		    Tuple.Create("OleDdeWndClass", "DDE Server Window")
+	    };
+
+	    static bool CheckExceptions(WindowDTO dto)
+	    {
+		    foreach (Tuple<string, string> exception in s_exceptions)
+		    {
+                if (dto.ClassName == exception.Item1 && dto.Title == exception.Item2)
+                    return false;
+		    }
+
+            return true;
+	    }
+
+	    public static IEnumerable<WindowDTO> Enumerate()
+	    {
+		    return NativeWindow.Enumerate()
+		                       .Select(TryCreate)
+		                       .Where(dto => dto != null && !string.IsNullOrEmpty(dto.Title))
+                               .Where(CheckExceptions);
+	    }
 
         public WindowDTO(NativeWindow window)
         {
