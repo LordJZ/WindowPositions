@@ -29,6 +29,8 @@ namespace WindowPositions
             WindowPlacement placement = this.Placement;
 
             window.Placement = placement;
+            // apply second time to override possible WM_DPICHANGED reaction
+            window.Placement = placement;
         }
     }
 }
