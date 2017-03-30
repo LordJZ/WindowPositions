@@ -34,6 +34,14 @@ namespace WindowPositions
 
 	    static bool CheckExceptions(WindowDTO dto)
 	    {
+	        if (dto.Title == "SystemResourceNotifyWindow" ||
+	            dto.Title == "MediaContextNotificationWindow" ||
+                dto.ClassName.StartsWith(".NET-BroadcastEventWindow"))
+	        {
+                // skip WPF stuff
+                return false;
+	        }
+
 		    foreach (Tuple<string, string> exception in s_exceptions)
 		    {
                 if (dto.ClassName == exception.Item1 && dto.Title == exception.Item2)
