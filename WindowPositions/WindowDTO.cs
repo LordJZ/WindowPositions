@@ -55,8 +55,25 @@ namespace WindowPositions
         {
             NativeWindow = window;
 
-            this.ClassName = UnwrapClassName(window.ClassName);
+            this.PID = window.ProcessId;
+
+            try
+            {
+                const ProcessAccessRights access =
+                    ProcessAccessRights.QueryInformation | ProcessAccessRights.VirtualMemoryRead;
+
+                Process process = Process.Open(this.PID, access);
+                this.ProcessName = System.IO.Path.GetFileName(process.ImagePath);
+            }
+            catch
+            {
+            }
+
             this.Title = window.Text;
+            this.ClassName = UnwrapClassName(window.ClassName);
+
+            if (!string.IsNullOrEmpty(this.ProcessName))
+                this.ClassName = this.ClassName.Replace("DefaultDomain;", this.ProcessName);
         }
 
         static string UnwrapClassName(string className)
@@ -75,5 +92,9 @@ namespace WindowPositions
         public string ClassName { get; set; }
 
         public string Title { get; set; }
+
+        public string ProcessName { get; set; }
+
+        public int PID { get; set; }
     }
 }

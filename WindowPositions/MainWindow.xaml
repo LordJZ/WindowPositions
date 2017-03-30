@@ -16,6 +16,8 @@
     <ListView Name="WindowsListView" Margin="10,40,10,10" d:DataContext="{d:DesignInstance windowPositions:WindowDTO}" SelectionMode="Single">
       <ListView.View>
         <GridView>
+          <GridViewColumn Header="PID" DisplayMemberBinding="{Binding PID}"/>
+          <GridViewColumn Header="Process" DisplayMemberBinding="{Binding ProcessName}"/>
           <GridViewColumn Header="Class" DisplayMemberBinding="{Binding ClassName}"/>
           <GridViewColumn Header="Title" DisplayMemberBinding="{Binding Title}"/>
           <GridViewColumn Header="Saved" DisplayMemberBinding="{Binding Saved}"/>
