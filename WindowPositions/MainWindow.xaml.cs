@@ -52,7 +52,7 @@ namespace WindowPositions
                 {
                 }
 
-                this.ActivaWindowTextBox.Text = active.ClassName + "|" + active.Text + " (" + dpi + ")";
+                this.ActivaWindowTextBox.Text = active.ProcessId + "|" + active.ClassName + "|" + active.Text + " (" + dpi + ")";
             }
             else
                 this.ActivaWindowTextBox.Text = string.Empty;
